@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pawon Sedulur menghadirkan bakso halal frozen, cireng isi, gyoza, dimsum, dan jajanan klasik Indonesia di Jepang. Praktis, lezat, halal! Rasakan Kelezatan di setiap sajian.">
+  <title>Bakso Halal Frozen di Jepang | Cireng Isi, Gyoza, Dimsum - Pawon Sedulur</title>
+
+  <!-- Link CSS eksternal -->
+  <link href="style.css" rel="stylesheet">
+
+  <!-- CSS Bootstrap & Animate.css -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+
+<body>
+
+<audio id="click-sound" src="https://www.soundjay.com/buttons/beep-07a.mp3" preload="auto"></audio>
+
+<header class="animate__animated animate__fadeInDown">
+  <img src="https://i.ibb.co/Y4JkJMVn/Pawon-Sedulur-20250425-123619-0000.png" alt="Logo Pawon Sedulur" style="max-width:300px;">
+  <p>Bakso, dan Jajanan Halal Frozen Rasa Klasik<br>Praktis, Gurih, dan Bikin Kangen</p>
+</header>
+
+<nav class="animate__animated animate__fadeIn">
+  <a href="#beranda">Beranda</a>
+  <a href="#menu">Menu</a>
+  <a href="#checkout">Checkout</a>
+  <a href="#testimonials">Testimoni</a>
+</nav>
+
+<section id="beranda" class="container py-5 animate__animated animate__fadeInUp">
+    <img src="https://i.ibb.co/6cS6kFws/Selamat-datang-20250422-102638-0000.png" class="img-fluid" alt="...">
+  <h2 class="text-center mb-4">Selamat Datang di Pawon Sedulur</h2>
+  <p class="text-center">Nikmati Bakso Lezat dengan Isi Lengkap!<br>Kuah kaldu gurih, tetelan juicy, bihun halus, sambal rumah bikin nagih!</p>
+</section>
+
+<section id="menu" class="container py-5 animate__animated animate__fadeInUp">
+<div class="menu">
+  <p class="accorhead">Menu Bakso</p>
+  <div class="container" id="bakso">
+      <div class="product-list">
+      
+
+   <!-- Bakso Mercon -->
+      <div class="product">        	
+        <img src="https://i.ibb.co/cHy3tpD/1-20250420-101914-0000.png" alt="Bakso Mercon" onclick="addQty(this)">
+       
+        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon">
+     <input type="number" min="0" value="0" data-name="Bakso Mercon" data-price="1300">
+        <br>  
+    <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+   
+   <!-- Bakso Keju Pedas-->
+   <div class="product">        
+        <img src="https://i.ibb.co/k7mXQK5/2-20250420-101914-0001.png" alt="Bakso Keju Pedas" onclick="addQty(this)">
+         <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon" >
+         <input type="number" min="0" value="0" data-name="Bakso Keju Pedas" data-price="1300">
+        <br>
+        <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+      </div>
+   
+   <!-- Bakso Urat -->
+   <div class="product">         	
+        <img src="https://i.ibb.co/VWwQ72NY/3-20250420-101914-0002.png" alt="Bakso Urat" onclick="addQty(this)">
+<img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon">         
+                <input type="number" min="0" value="0" data-name="Bakso Urat" data-price="1250">
+        <br>
+        <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>        
+      </div>
+      
+      <!-- Bakso Keju-->
+   <div class="product">         	
+        <img src="https://i.ibb.co/jvn80fQ1/4-20250420-101914-0003.png" alt="Bakso Keju" onclick="addQty(this)">
+        
+         <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon">
+        <input type="number" min="0" value="0" data-name="Bakso Keju" data-price="1250">
+        <br>
+        <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>        
+</div>
+
+<!-- Bakso Telur-->
+<div class="product">        
+        <img src="https://i.ibb.co/Y4GR0QX9/5-20250420-101914-0004.png" alt="Bakso Telur" onclick="addQty(this)">
+        
+        <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon">
+                <input type="number" min="0" value="0" data-name="Bakso Telur" data-price="1200">
+        <br>
+        <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+</div>   
+ 
+ <!-- Bakso Tahu-->  
+ <div class="product">          
+        <img src="https://i.ibb.co/67Jvb31T/6-20250420-101914-0005.png" alt="Bakso Tahu" onclick="addQty(this)">
+        
+       <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon">
+                <input type="number" min="0" value="0" data-name="Bakso Tahu" data-price="1050">
+        <br>
+        <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+</div>  
+  </div>
+  
+  
+  <p class="accorhead">Menu Jajanan</p>
+  <div class="container" id="bakso">
+      <div class="product-list">
+  
+   <!-- Gyoza -->
+      <div class="product">  
+      
+        <img src="https://i.ibb.co/1MXjsdx/1-20240716-200111-0000.png" alt="Gyoza">
+         <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" 
+     alt="Cart Icon" class="cart-icon">
+        <input type="number" min="0" value="0" data-name="Gyoza" data-price="500">
+        <br>       
+        <button type="button" class="btn btn-warning" onclick="removeQty(this)">-</button>
+        <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    </div>
+  
+</div></div>
+</section>
+
+<!-- ringkasan pesanan-->
+<section class="form-section container py-5 animate__animated animate__fadeIn" id="checkout">
+
+  <h2 class="text-center mb-4">Checkout & Pemesanan</h2>    
+
+  <!-- Tombol Tampilkan Ringkasan -->
+  <div class="text-center mb-4">
+    <button type="button" class="btn btn-success" onclick="showCartSummary()">Tampilkan Ringkasan Pesanan</button>
+  </div>
+
+  <!-- Ringkasan akan tampil di sini -->
+  <div id="cart-summary" class="my-3" style="display: none;"></div>
+
+  <!-- Form checkout WA -->
+  <form id="wa-form" style="display: none;">
+    <input type="text" id="nama" placeholder="Nama" required>
+    <input type="text" id="alamat" placeholder="Alamat" required>
+    <select id="pengiriman" required>
+      <option value="">Pilih metode pengiriman</option>
+      <option value="Jemput Sendiri">Jemput Sendiri di Hanazonocho Eki</option>
+      <option value="冷凍便 (Reitō-bin)">冷凍便 (Reitō-bin)</option>
+    </select>
+    <select id="pembayaran" required>
+      <option value="">Pilih metode pembayaran</option>
+      <option value="Transfer Bank">Transfer Bank</option>
+    </select>
+    <textarea id="catatan" placeholder="Catatan (opsional)"></textarea>
+    <input type="hidden" id="pesananInput">
+    <button type="submit"><strong>Kirim Pesanan</strong></button>
+  </form>
+
+</section>
+
+
+
+
+<!-- testimoni -->
+  <section id="testimonials" class="testimonials">
+  <h2>Apa Kata Mereka?</h2>
+  <div class="slider-container" id="testimonial-slider">
+    <div class="slider">
+      <div class="slide active">
+          <p><strong>Mbak Fuji, Osaka</strong></p>
+        <img src="https://i.ibb.co/gLpD09x7/Desain-tanpa-judul-20250426-234913-0000.png" alt="Testimoni 1">
+      </div>
+      <div class="slide">
+          <p><strong>Isma, Saitama</strong></p>
+        <img src="https://i.ibb.co/JRnvJqR7/Desain-tanpa-judul-20250426-234852-0000.png" alt="Testimoni 2">
+      </div>
+      <div class="slide">
+          <p><strong>Dek Ning, Osaka</strong></p>
+        <img src="https://i.ibb.co/6ck47CNq/Desain-tanpa-judul-20250426-234824-0000.png" alt="Testimoni 3">
+      </div>
+       <div class="slide">
+          <p><strong>Ibu Erni, Osaka</strong></p>
+        <img src="https://i.ibb.co/Kj087hDM/Desain-tanpa-judul-20250426-234751-0000.png" alt="Testimoni 4">
+      </div>
+        <div class="slide">
+          <p><strong>Teh Selly, Osaka</strong></p>
+        <img src="https://i.ibb.co/JRbVCPfY/Desain-tanpa-judul-20250427-072659-0000.png" alt="Testimoni 5">
+      </div>
+    </div>
+    <div class="pagination"></div>
+    <a href="https://wa.me/6289660111433?text=Halo%20Pawon%20Sedulur,%20saya%20mau%20kirim%20testimoni%20nih!" class="whatsapp-button" target="_blank">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp Icon" class="whatsapp-icon">
+  Kirim Testimoni
+</a>
+  </div>
+</section>
+
+
+<!-- JS Bootstrap dan Script eksternal -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+<!-- notif -->
+<div id="toast" class="toast-custom" style="display: none;">Toast Message Here</div>
+
+<!-- footer -->
+
+<footer>
+    <div class="container-footer">
+        
+  
+        
+<!-- About us -->
+    
+  <div class="footer-links">          
+      <h3>About us</h3>       
+      <p>Pawon Sedulur adalah dapur kecil penuh cinta yang hadir di Osaka, Jepang. Menyajikan frozen food halal khas Nusantara, membawa rasa rindu kampung halaman di setiap gigitan.</p>
+      </div>    
+           
+    <!-- Hubungi Kami -->
+    
+        <ul>
+      <h3>Hubungi Kami</h3>
+       <li>WhatsApp:<a href="https://wa.me/6289660111433" target="_blank">+6289-660-121-433</a></li>
+        <li>Email:<a href="mailto:pawonsedulur07@gmail.com">pawonsedulur07@gmail.com</a></li></ul>
+       
+     <!-- Social Media -->
+    
+     <ul><h3>Social Media</h3>
+       <li><a href="https://www.instagram.com/pawonsedulur03" target="_blank" style="color: #333;">
+          <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width: 24px; height: 24px;">
+        </a></li>
+        <li><a href="https://www.facebook.com/share/1BoMBcdySp/" target="_blank" style="color: #333;">
+          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 24px; height: 24px;">
+        </a></li>
+       <li><a href="https://tiktok.com/@pawonsedulur" target="_blank" style="color: #333;">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 24px; height: 24px;">
+        </a></li></ul>
+      
+  <!-- Lainnya -->
+      <ul>
+      <h3>Lainnya</h3>      
+        <li><a href="kebijakan-privasi.html">Kebijakan Privasi</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="cara-menyimpan-dan-menyiapkan.html">Cara Menyimpan & Menyiapkan Produk</a></li>
+        <li><a href="program-reseller.html">Program Reseller</a></li>
+<li><a href="#beranda">Kembali ke Beranda
+</a></li></ul>    
+</div>             
+        
+    <div class="footer-bottom">
+        
+      <p>&copy; 2025 Pawon Sedulur. All rights reserved. | <a href="syarat-dan-ketentuan.html">Terms & Conditions</a></p>
+      <img class="logo-footer footer-" src="https://i.ibb.co/Y7YpLJb9/20250425-115437-0000.png" alt="logo Pawon Sedulur"> 
+    </div>
+    </footer>
+</body>
+</html>
