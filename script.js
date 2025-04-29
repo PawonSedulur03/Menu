@@ -1,9 +1,3 @@
-// Fungsi Tambah Quantity
-function addQty(button) {
-  let input = button.parentElement.querySelector('input[type="number"]');
-  input.value = parseInt(input.value) + 1;
-  document.getElementById('click-sound').play();
-}
 // Kurang quantity
 function removeQty(button) {
   const input = button.closest('.product').querySelector('input[type="number"]');
@@ -102,10 +96,30 @@ slider.addEventListener('touchend', e => {
 // notice 
 function addQty(button) {
   let input = button.parentElement.querySelector('input[type="number"]');
+  let name = input.dataset.name;
+
+  // Jika input disabled (stok kosong), munculkan modal alternatif
+  if (input.disabled) {
+    const alternatifMap = {
+      "Bakso Mercon": "Bakso Keju Pedas",
+      "Bakso Keju Pedas": "Bakso Mercon",
+      "Bakso Tahu": "Bakso Telur",
+      "Bakso Telur": "Bakso Tahu",
+      "Bakso Urat": "Bakso Keju",
+      "Bakso Keju": "Bakso Urat"
+    };
+
+    const alternatif = alternatifMap[name] || "produk lainnya";
+    showModal(`${name} sedang kosong Lur...`, `Tapi cobain juga ${alternatif}, rasanya gak kalah mantul!`);
+    return; // Stop di sini, jangan lanjut nambah qty
+  }
+
+  // Jika stok aman, lanjut tambahkan qty
   input.value = parseInt(input.value) + 1;
   document.getElementById('click-sound').play();
   showToast();
 }
+ 
 
 function showToast() {
   const inputs = document.querySelectorAll('.product input');
@@ -179,5 +193,38 @@ function showCartSummary() {
     document.getElementById('cart-summary').style.display = 'none';
     document.getElementById('wa-form').style.display = 'none';
   }
+}
+
+//update stok
+// Panggil fungsi ini di awal (misalnya saat halaman load)
+window.addEventListener('DOMContentLoaded', () => {
+  fetchStokData();
+});
+
+function fetchStokData() {
+  fetch('stok.json')
+    .then(response => response.json())
+    .then(data => {
+      const inputs = document.querySelectorAll('.product input');
+      inputs.forEach(input => {
+        const name = input.dataset.name;
+        const stok = data[name];
+        if (stok === 0) {
+          input.disabled = true;
+        }
+      });
+    })
+    .catch(err => console.error("Gagal ambil data stok:", err));
+}
+
+
+function showModal(title, message) {
+  document.getElementById('modal-title').innerText = title;
+  document.getElementById('modal-message').innerText = message;
+  document.getElementById('outOfStockModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('outOfStockModal').style.display = 'none';
 }
 
