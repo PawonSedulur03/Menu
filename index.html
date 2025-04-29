@@ -21,15 +21,16 @@
 
 <header class="animate__animated animate__fadeInDown">
   <img src="https://i.ibb.co/Y4JkJMVn/Pawon-Sedulur-20250425-123619-0000.png" alt="Logo Pawon Sedulur" style="max-width:300px;">
-  <p>Bakso, dan Jajanan Halal Frozen Rasa Klasik<br>Praktis, Gurih, dan Bikin Kangen</p>
+  <h1>BAKSO</h1>
+  <p>dan Jajanan Halal Frozen Rasa Klasik<br>Praktis, Gurih, dan Bikin Kangen</p>
 </header>
-
+<main>
 <nav class="animate__animated animate__fadeIn">
   <a href="#beranda">Beranda</a>
   <a href="#menu">Menu</a>
   <a href="#checkout">Checkout</a>
   <a href="#testimonials">Testimoni</a>
-</nav>
+</nav></main>
 
 <section id="beranda" class="container py-5 animate__animated animate__fadeInUp">
     <img src="https://i.ibb.co/6cS6kFws/Selamat-datang-20250422-102638-0000.png" class="img-fluid" alt="...">
@@ -116,7 +117,7 @@
   
   
   <p class="accorhead">Menu Jajanan</p>
-  <div class="container" id="bakso">
+  <div class="container" id="jajanan">
       <div class="product-list">
   
    <!-- Gyoza -->
@@ -215,55 +216,61 @@
 <!-- footer -->
 
 <footer>
-    <div class="container-footer">
-        
-  
-        
-<!-- About us -->
-    
-  <div class="footer-links">          
+         
+<!-- About us -->    
+  <div class="footer-bottom">          
       <h3>About us</h3>       
       <p>Pawon Sedulur adalah dapur kecil penuh cinta yang hadir di Osaka, Jepang. Menyajikan frozen food halal khas Nusantara, membawa rasa rindu kampung halaman di setiap gigitan.</p>
-      </div>    </div>
+      </div>
       
     <!-- Hubungi Kami -->
-    <div class="footer-links"> 
+  
            <div class="footer-bottom">
 
       <h3>Hubungi Kami</h3>
-       WhatsApp:<a href="https://wa.me/6289660111433" target="_blank">+6289-660-121-433</a>
-        Email:<a href="mailto:pawonsedulur07@gmail.com">pawonsedulur07@gmail.com</a>
+       • WhatsApp: <a href="https://wa.me/6289660111433" target="_blank">+6289-660-121-433</a><br>
+        • Email: <a href="mailto:pawonsedulur07@gmail.com">pawonsedulur07@gmail.com </a>
        
      <!-- Social Media -->
     
      <h3>Social Media</h3>
-       <a href="https://www.instagram.com/pawonsedulur03" target="_blank" style="color: #333;">
-          <img src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width: 24px; height: 24px;">
+       <a  href="https://www.instagram.com/pawonsedulur03" target="_blank">
+          <img  src="https://cdn-icons-png.flaticon.com/512/174/174855.png" alt="Instagram" style="width: 35px; height: 35px;">
         </a>
-        <a href="https://www.facebook.com/share/1BoMBcdySp/" target="_blank" style="color: #333;">
-          <img src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook" style="width: 24px; height: 24px;">
+        <a href="https://www.facebook.com/share/1BoMBcdySp/" target="_blank">
+          <img  src="https://cdn-icons-png.flaticon.com/512/733/733547.png" alt="Facebook"
+          style="width: 35px; height: 35px;">
         </a>
-       <a href="https://tiktok.com/@pawonsedulur" target="_blank" style="color: #333;">
-          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 24px; height: 24px;">
+       <a href="https://tiktok.com/@pawonsedulur" target="_blank">
+          <img src="https://cdn-icons-png.flaticon.com/512/3046/3046121.png" alt="TikTok" style="width: 35px; height: 35px;">
         </a></div></div>
       
   <!-- Lainnya -->
   <div class="footer-bottom">
       
       <h3>Lainnya</h3>      
-      <p><a href="kebijakan-privasi.html">Kebijakan Privasi</a>
-       <a href="faq.html">FAQ</a>
-       <a href="cara-menyimpan-dan-menyiapkan.html">Cara Menyimpan & Menyiapkan Produk</a>
-       <a href="program-reseller.html">Program Reseller</a>
-<a href="#beranda">Kembali ke Beranda
+      <p><a href="kebijakan-privasi.html">• Kebijakan Privasi | </a>
+       <a href="faq.html">• FAQ | </a>
+       <a href="cara-menyimpan-dan-menyiapkan.html">• Cara Menyimpan & Menyiapkan Produk | </a><br>
+       <a href="program-reseller.html">• Program Reseller | </a>
+<a href="#beranda">• Kembali ke Beranda 
 </a></p>
 </div>      
         
     <div class="footer-bottom">
         
-      <p>&copy; 2025 Pawon Sedulur. All rights reserved. | <a href="syarat-dan-ketentuan.html">Terms & Conditions</a></p>
-      <img class="logo-footer footer-" src="https://i.ibb.co/Y7YpLJb9/20250425-115437-0000.png" alt="logo Pawon Sedulur"> 
+      <p>&copy; 2025 Pawon Sedulur. All rights reserved.<br><a href="syarat-dan-ketentuan.html">Terms & Conditions</a></p>
+      <img class="logo-footer" src="https://i.ibb.co/Y7YpLJb9/20250425-115437-0000.png" alt="logo Pawon Sedulur"> 
     </div>
     </footer>
+    
+    <!-- popup -->
+    <div id="outOfStockModal" class="modal-overlay" style="display: none;">
+  <div class="modal-box">
+    <h4 id="modal-title">Produk Kosong</h4>
+    <p id="modal-message">Alternatif produk akan muncul di sini...</p>
+    <button onclick="closeModal()">Tutup</button>
+  </div>
+</div>
 </body>
 </html>
