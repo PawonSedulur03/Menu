@@ -117,13 +117,13 @@ font-family: sans-serif;
   padding: 25px 5px;
       background: url('https://i.ibb.co/WhKWg3r/BAKSO-SEDULUR-20250425-122437-0000.png') center/cover no-repeat fixed;
     }
-    testimonials::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: rgba(255,255,255,0.85);
-      z-index: -1;
-    }
+    .testimonials::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(255,255,255,0.85);
+  z-index: -1;
+}
 
 .testimonials h2 {
   margin-bottom: 10px;
@@ -257,55 +257,23 @@ font-family: sans-serif;
   background-color: #00000064; padding: 40px 5px; font-family: Arial, sans-serif; color: #ffffff;
 }
 
-.container-footer {
-  max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 20px; align-items: flex-start;
-}
-
-
-
 .logo-footer {
   width: 100px;
   height: auto;
-  margin-bottom: -10px;
+  margin-bottom: -30px;
 }
-
-.footer-links {
-  flex: 1 1 250px; text-align: center;
-}
-
-
-.footer-links ul {
-  list-style: none;
-  padding: 0;
-}
-
-.footer-links ul li {
-  margin-bottom: 8px;
-}
-
-.footer-links ul li a {
-  color: #ccc;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-.footer-links ul li a:hover {
-  color: #ffd700;
-}
-
-
-
 
 .footer-bottom {
   text-align: center;
   margin-top: 30px;
   border-top: 1px solid #444;
   padding-top: 5px;
-  font-size: 12px;
+  font-size: 18px;
+  color: #5c3d2e;
 }
 
 .footer-bottom a {
-  color: #ff1f00;
+  color: #8b5e3c;
   text-decoration: none;
 }
 .footer-bottom a:hover {
@@ -462,3 +430,45 @@ footer {
     font-size: 1.2em;
   }
 }
+
+/*popup*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+.modal-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+}
+.modal-box h4 {
+  color: #d62828;
+  margin-bottom: 10px;
+}
+.modal-box button {
+  background: #d62828;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.modal-box button:hover {
+  background: #b51d1d;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
