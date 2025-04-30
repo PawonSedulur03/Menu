@@ -1,3 +1,118 @@
+// notice 
+function addQty(button) {
+  let input = button.parentElement.querySelector('input[type="number"]');
+  let name = input.dataset.name;
+
+  // Jika input disabled (stok kosong), munculkan modal alternatif
+  if (input.disabled) {
+    const alternatifMap = {
+      "Bakso Mercon": "Bakso Keju Pedas",
+      "Bakso Keju Pedas": "Bakso Mercon",
+      "Bakso Tahu": "Bakso Telur",
+      "Bakso Telur": "Bakso Tahu",
+      "Bakso Urat": "Bakso Keju",
+      "Bakso Keju": "Bakso Urat"
+    };
+
+    const alternatif = alternatifMap[name] || "produk lainnya";
+    showModal(`${name} sedang kosong Lur...`, `Tapi cobain juga ${alternatif}, rasanya gak kalah mantul!`);
+    return; // Stop di sini, jangan lanjut nambah qty
+  }
+
+  // Jika stok aman, lanjut tambahkan qty
+    input.value = parseInt(input.value) + 1; document.getElementById('click-sound').play();
+    showToast(`${name} ditambahkan ke keranjang!`);
+  }
+  
+  function showToast(pesan) {
+    const toast = document.getElementById('toast');
+    toast.innerHTML = pesan;
+    toast.style.display = 'block';
+    toast.classList.add('toast-show');
+    setTimeout(() => {
+      toast.classList.remove('toast-show');
+      setTimeout(() => { toast.style.display = 'none'; }, 500);
+    }, 2500);
+  }
+
+  function showModal(title, message) {
+    document.getElementById('modal-title').innerText = title;
+    document.getElementById('modal-message').innerText = message;
+    document.getElementById('outOfStockModal').style.display = 'flex';
+  }
+
+  function closeModal() {
+    document.getElementById('outOfStockModal').style.display = 'none';
+  }
+
+//ringkasan pesanan 
+function showCartSummary() {
+  const inputs = document.querySelectorAll('.product input');
+  let pesan = [];
+  let total = 0;
+
+  inputs.forEach(input => {
+    const qty = parseInt(input.value);
+    const name = input.dataset.name;
+    const price = parseInt(input.dataset.price);
+    if (qty > 0) {
+      pesan.push(`<li>${name} (${qty}) - ¥${price * qty}</li>`);
+      total += price * qty;
+    }
+  });
+
+  if (pesan.length > 0) {
+    const cartSummary = document.getElementById('cart-summary');
+    cartSummary.innerHTML = `
+      <h4>Ringkasan Pesanan:</h4>
+      <ul>${pesan.join('')}</ul>
+      <p><strong>Total: ¥${total}</strong></p>
+    `;
+    cartSummary.style.display = 'block';
+    document.getElementById('wa-form').style.display = 'block';
+
+    // Isi hidden input pesanan
+    document.getElementById('pesananInput').value = pesan.join(', ');
+  } else {
+    alert('Keranjang masih kosong lur!');
+    document.getElementById('cart-summary').style.display = 'none';
+    document.getElementById('wa-form').style.display = 'none';
+  }
+}
+
+//update stok
+// Panggil fungsi ini di awal (misalnya saat halaman load)
+window.addEventListener('DOMContentLoaded', () => {
+  fetchStokData();
+});
+
+function fetchStokData() {
+  fetch('stok.json')
+    .then(response => response.json())
+    .then(data => {
+      const inputs = document.querySelectorAll('.product input');
+      inputs.forEach(input => {
+        const name = input.dataset.name;
+        const stok = data[name];
+        if (stok === 0) {
+          input.disabled = true;
+        }
+      });
+    })
+    .catch(err => console.error("Gagal ambil data stok:", err));
+}
+
+
+function showModal(title, message) {
+  document.getElementById('modal-title').innerText = title;
+  document.getElementById('modal-message').innerText = message;
+  document.getElementById('outOfStockModal').style.display = 'flex';
+}
+
+function closeModal() {
+  document.getElementById('outOfStockModal').style.display = 'none';
+}
+
 // Kurang quantity
 function removeQty(button) {
   const input = button.closest('.product').querySelector('input[type="number"]');
@@ -7,8 +122,6 @@ function removeQty(button) {
     if (clickSound) clickSound.play();
   }
 }
-
-
 
 // Checkout ke WA
 document.getElementById("wa-form").addEventListener("submit", function(e) {
@@ -92,139 +205,3 @@ slider.addEventListener('touchend', e => {
     moveToSlide(currentSlide);
   }
 });
-
-// notice 
-function addQty(button) {
-  let input = button.parentElement.querySelector('input[type="number"]');
-  let name = input.dataset.name;
-
-  // Jika input disabled (stok kosong), munculkan modal alternatif
-  if (input.disabled) {
-    const alternatifMap = {
-      "Bakso Mercon": "Bakso Keju Pedas",
-      "Bakso Keju Pedas": "Bakso Mercon",
-      "Bakso Tahu": "Bakso Telur",
-      "Bakso Telur": "Bakso Tahu",
-      "Bakso Urat": "Bakso Keju",
-      "Bakso Keju": "Bakso Urat"
-    };
-
-    const alternatif = alternatifMap[name] || "produk lainnya";
-    showModal(`${name} sedang kosong Lur...`, `Tapi cobain juga ${alternatif}, rasanya gak kalah mantul!`);
-    return; // Stop di sini, jangan lanjut nambah qty
-  }
-
-  // Jika stok aman, lanjut tambahkan qty
-  input.value = parseInt(input.value) + 1;
-  document.getElementById('click-sound').play();
-  showToast();
-}
- 
-
-function showToast() {
-  const inputs = document.querySelectorAll('.product input');
-  let pesan = [];
-  let total = 0;
-
-  inputs.forEach(input => {
-    const qty = parseInt(input.value);
-    const name = input.dataset.name;
-    const price = parseInt(input.dataset.price);
-    if (qty > 0) {
-      pesan.push(`${name} (${qty})`);
-      total += price * qty;
-    }
-  });
-
-  if (pesan.length > 0) {
-    const toast = document.getElementById('toast');
-    toast.innerHTML = `<strong>Pesanan:</strong> ${pesan.join(', ')}<br><strong>Total: ¥${total}</strong>`;
-
-    // Reset class toast
-    toast.className = "toast-custom";
-
-    // Kalau total >= 3000, kasih class VIP
-    if (total >= 3000) {
-      toast.classList.add('toast-vip');
-    }
-
-    toast.style.display = 'block';
-    toast.classList.add('toast-show');
-
-    setTimeout(() => {
-      toast.classList.remove('toast-show');
-      setTimeout(() => {
-        toast.style.display = 'none';
-      }, 500);
-    }, 3000);
-  }
-}
-
-//ringkasan pesanan 
-function showCartSummary() {
-  const inputs = document.querySelectorAll('.product input');
-  let pesan = [];
-  let total = 0;
-
-  inputs.forEach(input => {
-    const qty = parseInt(input.value);
-    const name = input.dataset.name;
-    const price = parseInt(input.dataset.price);
-    if (qty > 0) {
-      pesan.push(`<li>${name} (${qty}) - ¥${price * qty}</li>`);
-      total += price * qty;
-    }
-  });
-
-  if (pesan.length > 0) {
-    const cartSummary = document.getElementById('cart-summary');
-    cartSummary.innerHTML = `
-      <h4>Ringkasan Pesanan:</h4>
-      <ul>${pesan.join('')}</ul>
-      <p><strong>Total: ¥${total}</strong></p>
-    `;
-    cartSummary.style.display = 'block';
-    document.getElementById('wa-form').style.display = 'block';
-
-    // Isi hidden input pesanan
-    document.getElementById('pesananInput').value = pesan.join(', ');
-  } else {
-    alert('Keranjang masih kosong lur!');
-    document.getElementById('cart-summary').style.display = 'none';
-    document.getElementById('wa-form').style.display = 'none';
-  }
-}
-
-//update stok
-// Panggil fungsi ini di awal (misalnya saat halaman load)
-window.addEventListener('DOMContentLoaded', () => {
-  fetchStokData();
-});
-
-function fetchStokData() {
-  fetch('stok.json')
-    .then(response => response.json())
-    .then(data => {
-      const inputs = document.querySelectorAll('.product input');
-      inputs.forEach(input => {
-        const name = input.dataset.name;
-        const stok = data[name];
-        if (stok === 0) {
-          input.disabled = true;
-        }
-      });
-    })
-    .catch(err => console.error("Gagal ambil data stok:", err));
-}
-
-
-function showModal(title, message) {
-  document.getElementById('modal-title').innerText = title;
-  document.getElementById('modal-message').innerText = message;
-  document.getElementById('outOfStockModal').style.display = 'flex';
-}
-
-function closeModal() {
-  document.getElementById('outOfStockModal').style.display = 'none';
-}
-
