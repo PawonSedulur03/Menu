@@ -24,6 +24,7 @@ function addQty(button) {
     showToast(`${name} ditambahkan ke keranjang!`);
   }
   
+
   function showToast(pesan) {
     const toast = document.getElementById('toast');
     toast.innerHTML = pesan;
