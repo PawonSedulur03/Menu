@@ -110,6 +110,30 @@ nav a:hover {
   
 }
 
+/*Notice*/
+.toast-custom {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  background: #d62828;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 40, 40, 0.7), 0 0 30px rgba(255, 40, 40, 0.5);
+  font-weight: bold;
+  z-index: 9999;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
+}
+
+.toast-show {
+  display: block;
+  opacity: 1;
+  transform: translateY(0);
+}
+
+
 /* testimoni*/
 .testimonials {
 font-family: sans-serif;
@@ -222,29 +246,6 @@ font-family: sans-serif;
   height: 24px;
 }
 
-/*Notice*/
-.toast-custom {
-  position: fixed;
-  bottom: 30px;
-  right: 30px;
-  background: #d62828;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 12px;
-  box-shadow: 0 0 15px rgba(255, 40, 40, 0.7), 0 0 30px rgba(255, 40, 40, 0.5);
-  font-weight: bold;
-  z-index: 9999;
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
-}
-
-.toast-show {
-  display: block;
-  opacity: 1;
-  transform: translateY(0);
-}
-
 /* Kalau total belanja di atas 3000, glowing warna emas */
 .toast-vip {
   background: #ffd700;
@@ -252,40 +253,85 @@ font-family: sans-serif;
   box-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.6);
 }
 
-/* footer */
-.footer {
-  background-color: #00000064; padding: 40px 5px; font-family: Arial, sans-serif; color: #ffffff;
+/*dock*/
+ /* Reset basic style */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.logo-footer {
-  width: 100px;
-  height: auto;
-  margin-bottom: -30px;
+/* Main Content */
+main {
+  max-width: 800px;
+  margin: 0 auto;
 }
 
-.footer-bottom {
-  text-align: center;
-  margin-top: 30px;
-  border-top: 1px solid #444;
-  padding-top: 5px;
-  font-size: 18px;
-  color: #5c3d2e;
+section {
+  margin-bottom: 40px;
 }
 
-.footer-bottom a {
+section h2 {
   color: #8b5e3c;
-  text-decoration: none;
-}
-.footer-bottom a:hover {
-  text-decoration: underline;
+  font-size: 1.8em;
+  margin-bottom: 15px;
 }
 
-/* Responsive biar pas di HP */
-@media (max-width: 768px) {
-  .footer-top {
-    flex-direction: column;
-    text-align: center;
-  }
+section h3 {
+  color: #a9745c;
+  font-size: 1.4em;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+ul {
+  margin-left: 20px;
+  list-style-type: disc;
+}
+
+p, ul li {
+  margin-bottom: 10px;
+  font-size: 1em;
+}
+
+/*popup*/
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+.modal-box {
+  background: white;
+  padding: 20px 30px;
+  border-radius: 12px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
+  animation: fadeIn 0.3s ease;
+}
+.modal-box h4 {
+  color: #d62828;
+  margin-bottom: 10px;
+}
+.modal-box button {
+  background: #d62828;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+.modal-box button:hover {
+  background: #b51d1d;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
 }
 
 /*accordion faq*/
@@ -334,141 +380,39 @@ font-family: sans-serif;
     .accordion-content.open {
       padding: 15px 20px;
     }
-
-/*dock*/
-  
     
- /* Reset basic style */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    /* footer */
+.footer {
+  background-color: #00000064; padding: 40px 5px; font-family: Arial, sans-serif; color: #ffffff;
 }
 
-
-/* Main Content */
-main {
-  max-width: 800px;
-  margin: 0 auto;
+.logo-footer {
+  width: 100px;
+  height: auto;
+  margin-bottom: -30px;
 }
 
-section {
-  margin-bottom: 40px;
-}
-
-section h2 {
-  color: #8b5e3c;
-  font-size: 1.8em;
-  margin-bottom: 15px;
-}
-
-section h3 {
-  color: #a9745c;
-  font-size: 1.4em;
-  margin-top: 20px;
-  margin-bottom: 10px;
-}
-
-ul {
-  margin-left: 20px;
-  list-style-type: disc;
-}
-
-p, ul li {
-  margin-bottom: 10px;
-  font-size: 1em;
-}
-
-/* Footer */
-footer {
-  background-color: #f5ebe0;
-  padding: 20px 10px;
+.footer-bottom {
   text-align: center;
-  margin-top: 50px;
-  border-top: 1px solid #d3c4b0;
-}
-
-.footer-bottom p {
-  font-size: 0.9em;
+  margin-top: 30px;
+  border-top: 1px solid #444;
+  padding-top: 5px;
+  font-size: 18px;
   color: #5c3d2e;
-  margin-bottom: 10px;
 }
 
 .footer-bottom a {
   color: #8b5e3c;
   text-decoration: none;
 }
-
 .footer-bottom a:hover {
   text-decoration: underline;
 }
 
-.logo-footer {
-  width: 100px;
-  margin-top: 10px;
-}
-
-/* Responsive */
-@media (max-width: 600px) {
-  body {
-    padding: 10px;
-  }
-
-  header h1 {
-    font-size: 1.8em;
-  }
-
-  header p {
-    font-size: 1em;
-  }
-
-  section h2 {
-    font-size: 1.5em;
-  }
-
-  section h3 {
-    font-size: 1.2em;
+/* Responsive biar pas di HP */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    text-align: center;
   }
 }
-
-/*popup*/
-.modal-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 99999;
-}
-.modal-box {
-  background: white;
-  padding: 20px 30px;
-  border-radius: 12px;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0 10px 20px rgba(0,0,0,0.5);
-  animation: fadeIn 0.3s ease;
-}
-.modal-box h4 {
-  color: #d62828;
-  margin-bottom: 10px;
-}
-.modal-box button {
-  background: #d62828;
-  color: white;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 6px;
-  margin-top: 15px;
-  cursor: pointer;
-}
-.modal-box button:hover {
-  background: #b51d1d;
-}
-@keyframes fadeIn {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-
