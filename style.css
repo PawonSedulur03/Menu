@@ -3,28 +3,35 @@ body {
   margin: 0;
   background: url('https://i.ibb.co/WhKWg3r/BAKSO-SEDULUR-20250425-122437-0000.png') center/cover no-repeat fixed;
 }
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background: rgba(255,255,255,0.85);
-  z-index: -1;
+main {
+  padding-top: 280px; /* kira-kira setinggi header + nav */
 }
+
 header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Supaya ada di atas elemen lain */
   background: url('https://i.ibb.co/WhKWg3r/BAKSO-SEDULUR-20250425-122437-0000.png') center/cover no-repeat;
   text-align: center;
   padding: 40px 20px;
   color: #fff;
-  position: relative;
 }
 header::before {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0,0,0,0.4);
+  background: rgba(0, 0, 0, 0.4);
   z-index: -1;
 }
+
 nav {
+  position: fixed;
+  top: 260px; /* atur ini sesuai tinggi header */
+  left: 0;
+  width: 100%;
+  z-index: 998;
   background-color: #d62828;
   display: flex;
   justify-content: center;
