@@ -1,9 +1,16 @@
 {
-  "Bakso Mercon": 1,
-  "Bakso Keju Pedas": 1,
+  "Bakso Mercon": 10,
+  "Bakso Keju Pedas": 10,
   "Bakso Tahu": 0,
-  "Bakso Telur": 1,
-  "Bakso Urat": 1,
-  "Bakso Keju": 1,
-  "Gyoza": 1
+  "Bakso Telur": 10,
+  "Bakso Urat": 10,
+  "Bakso Keju": 10,
+  "Bakso Mercon 1kg": 0,
+  "Bakso Keju Pedas 1kg": 0,
+  "Bakso Tahu 1kg": 0,
+  "Bakso Telur 1kg": 0,
+  "Bakso Urat 1kg": 0,
+  "Bakso Keju 1kg": 0,
+  "Bakso Kecil 1kg": 0,
+  "Gyoza": 10
 }
