@@ -1,3 +1,4 @@
+
 // notice 
 function addQty(button) {
   let input = button.parentElement.querySelector('input[type="number"]');
@@ -11,11 +12,20 @@ function addQty(button) {
       "Bakso Tahu": "Bakso Telur",
       "Bakso Telur": "Bakso Tahu",
       "Bakso Urat": "Bakso Keju",
-      "Bakso Keju": "Bakso Urat"
+      "Bakso Keju": "Bakso Urat",
+      "Bakso Mercon 1kg": "Bakso Keju Pedas 1kg",
+      "Bakso Keju Pedas 1kg": "Bakso Mercon 1kg",
+      "Bakso Tahu 1kg": "Bakso Telur",
+      "Bakso Telur 1kg": "Bakso Tahu 1kg",
+      "Bakso Urat 1kg": "Bakso Keju 1kg atau Bakso Kecil 1kg",
+      "Bakso Kecil 1kg": "Bakso Keju 1kg atau Bakso Urat 1kg",
+      "Bakso Keju 1kg": "Bakso Urat 1kg atau Bakso Kecil 1kg",
+      
+      
     };
 
     const alternatif = alternatifMap[name] || "produk lainnya";
-    showModal(`${name} sedang kosong Lur...`, `Tapi cobain juga ${alternatif}, rasanya gak kalah mantul!`);
+    showModal(`${name} sedang kosong Lur...`, `Tapi cobain juga ${alternatif} lur, rasanya gak kalah mantul!`);
     return; // Stop di sini, jangan lanjut nambah qty
   }
 
