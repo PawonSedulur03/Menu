@@ -36,10 +36,12 @@ nav a {
   transition: all 0.3s;
   border-radius: 8px;
 }
-nav a:hover {
-  background: #fff;
-  color: #d62828;
-  transform: scale(1.05);
+
+nav a.active {
+  background-color: white;
+  color: #d32f2f;
+  transition: all 0.3s ease;
+  border-radius: 10px;
 }
     /*produk*/
       .accorhead {
@@ -412,4 +414,4 @@ p, ul li {
     flex-direction: column;
     text-align: center;
   }
-      }
+}
