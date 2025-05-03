@@ -1,3 +1,12 @@
+
+function debounce(func, delay) {
+  let timeout;
+  return function(...args) {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, args), delay);
+  };
+}
+
 //nav
 const navLinks = document.querySelectorAll('nav a');
 
@@ -11,7 +20,7 @@ navLinks.forEach(link => {
 const sections = document.querySelectorAll('section'); // pastikan setiap bagian (beranda, menu, testimoni) pakai <section>
 const navItems = document.querySelectorAll('nav a');
 
-window.addEventListener('scroll', () => {
+window.addEventListener('scroll', debounce(() => {
   let current = '';
   sections.forEach(section => {
     const sectionTop = section.offsetTop;
@@ -26,7 +35,7 @@ window.addEventListener('scroll', () => {
       link.classList.add('active');
     }
   });
-});
+}, 100)); // 100ms delay, bisa disesuaikan
 
 // notice 
 function addQty(button) {
