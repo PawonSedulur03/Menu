@@ -1,4 +1,34 @@
 
+
+
+let keranjang = [];
+
+function tambahDanMasukkan(inputId) {
+  const input = document.getElementById(inputId);
+  const name = input.dataset.name;
+  const price = parseInt(input.dataset.price);
+
+  // Tambah nilai input
+  let qty = parseInt(input.value) || 0;
+  qty += 1;
+  input.value = qty;
+
+  // Cek apakah produk sudah ada di keranjang
+  const existingItem = keranjang.find(item => item.name === name);
+
+  if (existingItem) {
+    existingItem.qty += 1;
+  } else {
+    keranjang.push({ name: name, price: price, qty: 1 });
+  }
+
+  alert(`1x ${name} dimasukkan ke keranjang!`);
+
+  console.log("Keranjang:", keranjang);
+  localStorage.setItem("keranjangPawonSedulur", JSON.stringify(keranjang));
+}
+
+
 function debounce(func, delay) {
   let timeout;
   return function(...args) {
@@ -6,6 +36,7 @@ function debounce(func, delay) {
     timeout = setTimeout(() => func.apply(this, args), delay);
   };
 }
+
 
 //nav
 const navLinks = document.querySelectorAll('nav a');
