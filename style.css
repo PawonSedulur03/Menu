@@ -1,8 +1,24 @@
 
+.button-group {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.button-group .btn {
+  flex: 1 1 calc(50% - 10px);
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 8px;
+  font-weight: bold;
+}
+
 body {
   font-family: sans-serif;
   margin: 0;
-  background: url('https://i.ibb.co/jPqRW0wM/background-body.png') center/cover no-repeat fixed;
+  background: url('https://i.ibb.co/xt1pBQRw/Desain-tanpa-judul-20250503-223832-0000.png') center/cover no-repeat fixed;
 }
 main {
   padding-top: 0px; /* kira-kira setinggi header + nav */
@@ -11,7 +27,7 @@ main {
 header {
   position: relative; /* bukan fixed */
   width: 100%;
-  background: url('https://i.ibb.co/WhKWg3r/BAKSO-SEDULUR-20250425-122437-0000.png') center/cover no-repeat;
+  background: url('https://i.ibb.co/Kzc4D4h4/Desain-tanpa-judul-20250503-230319-0000.png') center/cover no-repeat;
   text-align: center;
   padding: 40px 20px;
   color: #fff;
@@ -153,8 +169,8 @@ header {
 .testimonials {
 font-family: sans-serif;
       text-align: center;
-  padding: 40px 5px;
-   background:#d62828;
+  padding: 30px 5px;
+   background: url('https://i.ibb.co/yBmrjVdw/Desain-tanpa-judul-20250503-232659-0000.png') center/cover no-repeat;
 }
     .testimonials::before {
   content: "";
