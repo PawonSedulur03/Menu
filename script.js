@@ -1,4 +1,41 @@
+//Deskripsi produk 
+function showDescModal(imgElement) {
+  const name = imgElement.alt;
+  const imgSrc = imgElement.src;
+  const description = `
+  Isi dalam kemasan:<br> 
+    1 butir ${name} gede<br>
+    5 butir bakso kecil<br>
+    50ml biang kuah gurih<br>
+    Toping: bihun, tetelan+lemak, dan sambal homemade
+  `;
 
+  document.getElementById('desc-modal-title').innerText = name;
+  document.getElementById('desc-modal-image').src = imgSrc;
+  document.getElementById('desc-modal-description').innerHTML = description;
+
+  document.getElementById('desc-modal-add-button').setAttribute('data-name', name);
+  document.getElementById('productDescModal').style.display = 'flex';
+}
+
+function closeDescModal() {
+  document.getElementById('productDescModal').style.display = 'none';
+}
+
+function addToCartFromDesc() {
+  const name = document.getElementById('desc-modal-add-button').getAttribute('data-name');
+  const inputs = document.querySelectorAll('.qty-input');
+
+  inputs.forEach(input => {
+    if (input.getAttribute('data-name') === name) {
+      // Panggil tombol "+Keranjang" yang terkait
+      const button = input.nextElementSibling;
+      addQty(button); // biar 1x aja yang nambah
+    }
+  });
+
+  closeDescModal();
+}
 
 
 let keranjang = [];
@@ -193,15 +230,6 @@ function closeModal() {
   document.getElementById('outOfStockModal').style.display = 'none';
 }
 
-// Kurang quantity
-function removeQty(button) {
-  const input = button.closest('.product').querySelector('input[type="number"]');
-  if (input && parseInt(input.value) > 0) {
-    input.value = parseInt(input.value) - 1;
-    const clickSound = document.getElementById("click-sound");
-    if (clickSound) clickSound.play();
-  }
-}
 
 // Checkout ke WA
 document.getElementById("wa-form").addEventListener("submit", function(e) {
