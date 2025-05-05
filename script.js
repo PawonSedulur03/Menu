@@ -3,11 +3,12 @@ function showDescModal(imgElement) {
   const name = imgElement.alt;
   const imgSrc = imgElement.src;
   const description = `
-  Isi dalam kemasan:<br> 
-    1 butir ${name} gede<br>
-    5 butir bakso kecil<br>
-    50ml biang kuah gurih<br>
-    Toping: bihun, tetelan+lemak, dan sambal homemade
+  Isi Paket Komplit ${name} Spesial!<br>
+  1 ${name}<br>
+  5 bakso kecil,<br>
+  50ml biang kuah gurih,<br>
+  tetelan+lemak lembut,<br> 
+  bihun, dan sambal homemade pedas mantap!
   `;
 
   document.getElementById('desc-modal-title').innerText = name;
