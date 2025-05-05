@@ -6,7 +6,7 @@ function showDescModal(imgElement) {
   Isi dalam kemasan:<br> 
     1 butir ${name} gede<br>
     5 butir bakso kecil<br>
-    100ml biang kuah gurih<br>
+    50ml biang kuah gurih<br>
     Toping: bihun, tetelan+lemak, dan sambal homemade
   `;
 
