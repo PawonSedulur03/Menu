@@ -1,14 +1,26 @@
-//Deskripsi produk 
+//animasi scroll 
+const scrollmenu2 = document.querySelector('.scrollmenu2');
+
+scrollmenu2.addEventListener('scroll', () => {
+  scrollmenu2.classList.add('scroll-anim');
+  
+  // Hapus animasi setelah 300ms (biar nggak permanen)
+  clearTimeout(scrollmenu2.timer);
+  scrollmenu2.timer = setTimeout(() => {
+    scrollmenu2.classList.remove('scroll-anim');
+  }, 300);
+});
+
+//Deskripsi produk bakso komplit spesial 
 function showDescModal(imgElement) {
   const name = imgElement.alt;
   const imgSrc = imgElement.src;
   const description = `
-  Isi Paket Komplit ${name} Spesial!<br>
-  1 ${name}<br>
-  5 bakso kecil,<br>
-  50ml biang kuah gurih,<br>
-  tetelan+lemak lembut,<br> 
-  bihun, dan sambal homemade pedas mantap!
+  Isi dalam kemasan:<br> 
+    1 butir ${name} gede<br>
+    5 butir bakso kecil<br>
+    50ml biang kuah gurih<br>
+    Toping: bihun, tetelan+lemak, dan sambal homemade
   `;
 
   document.getElementById('desc-modal-title').innerText = name;
@@ -109,24 +121,31 @@ window.addEventListener('scroll', debounce(() => {
 // notice 
 function addQty(button) {
   let input = button.parentElement.querySelector('input[type="number"]');
-  let name = input.dataset.name;
+  let name = input.dataset.name;  
 
   // Jika input disabled (stok kosong), munculkan modal alternatif
   if (input.disabled) {
     const alternatifMap = {
-      "Bakso Mercon": "Bakso Keju Pedas",
-      "Bakso Keju Pedas": "Bakso Mercon",
-      "Bakso Tahu": "Bakso Telur",
-      "Bakso Telur": "Bakso Tahu",
-      "Bakso Urat": "Bakso Keju",
-      "Bakso Keju": "Bakso Urat",
+      "Bakso Mercon Spesial": "Bakso Keju Pedas Spesial",
+      "Bakso Keju Pedas Spesial": "Bakso Mercon Spesial",
+      "Bakso Tahu Spesial": "Bakso Telur Spesial",
+      "Bakso Telur Spesial": "Bakso Tahu Spesial",
+      "Bakso Urat Spesial": "Bakso Keju Spesial",
+      "Bakso Keju Spesial": "Bakso Urat Spesial",
       "Bakso Mercon 1kg": "Bakso Keju Pedas 1kg",
       "Bakso Keju Pedas 1kg": "Bakso Mercon 1kg",
-      "Bakso Tahu 1kg": "Bakso Telur",
+      "Bakso Tahu 1kg": "Bakso Telur 1kg",
       "Bakso Telur 1kg": "Bakso Tahu 1kg",
       "Bakso Urat 1kg": "Bakso Keju 1kg atau Bakso Kecil 1kg",
       "Bakso Kecil 1kg": "Bakso Keju 1kg atau Bakso Urat 1kg",
       "Bakso Keju 1kg": "Bakso Urat 1kg atau Bakso Kecil 1kg",
+      "Bakso Mercon ½kg": "Bakso Keju Pedas ½kg",
+      "Bakso Keju Pedas ½kg": "Bakso Mercon ½kg",
+      "Bakso Tahu ½kg": "Bakso Telur ½kg",
+      "Bakso Telur ½kg": "Bakso Tahu ½kg",
+      "Bakso Urat ½kg": "Bakso Keju ½kg atau Bakso Kecil ½kg",
+      "Bakso Kecil ½kg": "Bakso Keju ½kg atau Bakso Urat ½kg",
+      "Bakso Keju ½kg": "Bakso Urat ½kg atau Bakso Kecil ½kg",
       
       
     };
@@ -140,6 +159,7 @@ function addQty(button) {
     input.value = parseInt(input.value) + 1; document.getElementById('click-sound').play();
     showToast(`${name} ditambahkan ke keranjang!`);
   }
+  
   
 
   function showToast(pesan) {
@@ -165,9 +185,12 @@ function addQty(button) {
 
 //ringkasan pesanan 
 function showCartSummary() {
-  const inputs = document.querySelectorAll('.product input');
+  const inputs = document.querySelectorAll('.product input, .product2 input');
+  const cartSummary = document.getElementById('cart-summary');
   let pesan = [];
   let total = 0;
+  let totalQty = 0;
+  let promoText = "";
 
   inputs.forEach(input => {
     const qty = parseInt(input.value);
@@ -176,24 +199,36 @@ function showCartSummary() {
     if (qty > 0) {
       pesan.push(`<li>${name} (${qty}) - ¥${price * qty}</li>`);
       total += price * qty;
+      totalQty += qty;
     }
   });
 
+  // Promo otomatis
+  if (totalQty >= 5) {
+    promoText += `<li><strong>Bonus:<br>• 1x Toping Tetelan+lemak GRATIS!</strong></li>`;
+  }
+  if (total >= 3000) {
+    promoText += `<li><strong>Bonus:<br>• 2x -Toping Sambal GRATIS!<br>• 2x -Toping Tetelan+lemak GRATIS!. </strong></li>`;
+  }
+
   if (pesan.length > 0) {
-    const cartSummary = document.getElementById('cart-summary');
+    if (total < 1000) {
+      showModal("Punten Sedulur", "Total belanja minimal ¥1000 ya, biar bisa checkout.");
+      return;
+    }
+
     cartSummary.innerHTML = `
       <h4>Ringkasan Pesanan:</h4>
-      <ul>${pesan.join('')}</ul>
+      <ul>${pesan.join('')}${promoText}</ul>
       <p><strong>Total: ¥${total}</strong></p>
     `;
     cartSummary.style.display = 'block';
     document.getElementById('wa-form').style.display = 'block';
 
-    // Isi hidden input pesanan
     document.getElementById('pesananInput').value = pesan.join(', ');
   } else {
     alert('Keranjang masih kosong lur!');
-    document.getElementById('cart-summary').style.display = 'none';
+    cartSummary.style.display = 'none';
     document.getElementById('wa-form').style.display = 'none';
   }
 }
@@ -208,7 +243,7 @@ function fetchStokData() {
   fetch('stok.json')
     .then(response => response.json())
     .then(data => {
-      const inputs = document.querySelectorAll('.product input');
+      const inputs = document.querySelectorAll('.product input, .product2 input');
       inputs.forEach(input => {
         const name = input.dataset.name;
         const stok = data[name];
@@ -221,25 +256,15 @@ function fetchStokData() {
 }
 
 
-function showModal(title, message) {
-  document.getElementById('modal-title').innerText = title;
-  document.getElementById('modal-message').innerText = message;
-  document.getElementById('outOfStockModal').style.display = 'flex';
-}
-
-function closeModal() {
-  document.getElementById('outOfStockModal').style.display = 'none';
-}
-
-
 // Checkout ke WA
 document.getElementById("wa-form").addEventListener("submit", function(e) {
   e.preventDefault();
   
-  const inputs = document.querySelectorAll('.product input');
+  const inputs = document.querySelectorAll('.product input, .product2 input');
   let pesan = [];
   let total = 0;
-  
+  let totalQty = 0;
+
   inputs.forEach(input => {
     const qty = parseInt(input.value);
     const name = input.dataset.name;
@@ -247,9 +272,18 @@ document.getElementById("wa-form").addEventListener("submit", function(e) {
     if (qty > 0) {
       pesan.push(`${name} (${qty}) - ¥${price * qty}`);
       total += price * qty;
+      totalQty += qty;
     }
   });
-  
+
+  // Promo otomatis
+  if (totalQty >= 5) {
+    pesan.push("Bonus:1 Toping Tetelan+lemak GRATIS!");
+  }
+  if (total >= 3000) {
+    pesan.push("Bonus:2 Sambal & 2 Tetelan+lemak GRATIS!");
+  }
+
   if (pesan.length == 0) {
     alert('Keranjang masih kosong lur!');
     return;
@@ -260,9 +294,9 @@ document.getElementById("wa-form").addEventListener("submit", function(e) {
   const pengiriman = document.getElementById('pengiriman').value;
   const pembayaran = document.getElementById('pembayaran').value;
   const catatan = document.getElementById('catatan').value;
-  
+
   const message = `Halo Admin Pawon Sedulur! Saya mau pesan:\n\n${pesan.join('\n')}\n\nTotal: ¥${total}\n\nNama: ${nama}\nAlamat: ${alamat}\nPengiriman: ${pengiriman}\nPembayaran: ${pembayaran}\nCatatan: ${catatan}`;
-  
+
   const url = `https://wa.me/6289660111433?text=${encodeURIComponent(message)}`;
   window.open(url, '_blank');
 });
