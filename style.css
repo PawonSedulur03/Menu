@@ -3,6 +3,17 @@
   transform: rotateY(13deg);
   transition: transform 0.3s ease;
 }
+.varian-wrapper {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+  opacity: 0;
+}
+
+.varian-wrapper.show {
+  max-height: 200px; /* cukup untuk dua pilihan */
+  opacity: 1;
+}
 
 /*menu prasmanan*/
 div.scrollmenu2 {
@@ -309,10 +320,10 @@ header {
     }
     
   .qty-input {
-    width: 50px; /* bisa disesuaikan */
+    width: 35px; /* bisa disesuaikan */
     text-align: center; /* biar angkanya di tengah */
-    padding: 5px;
-    border-radius: 5px;
+    padding: 3px;
+    border-radius: 3px;
     border: 1px solid #ccc;
   }
     
@@ -665,4 +676,4 @@ ul li {
     flex-direction: column;
     text-align: center;
   }
-}
+  }
