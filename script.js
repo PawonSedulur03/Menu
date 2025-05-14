@@ -87,6 +87,25 @@ function debounce(func, delay) {
   };
 }
 
+function toggleVarian(button) {
+  const wrapper = button.nextElementSibling;
+  const isShown = wrapper.classList.contains('show');
+
+  if (isShown) {
+    wrapper.classList.remove('show');
+    button.innerText = '+Keranjang';
+  } else {
+    // Tutup varian lain jika ada
+    document.querySelectorAll('.varian-wrapper.show').forEach(el => {
+      el.classList.remove('show');
+      el.previousElementSibling.innerText = '+Keranjang';
+    });
+
+    wrapper.classList.add('show');
+    button.innerText = 'Pilih Ukuran';
+  }
+}
+
 
 //nav
 const navLinks = document.querySelectorAll('nav a');
@@ -122,6 +141,15 @@ window.addEventListener('scroll', debounce(() => {
 function addQty(button) {
   let input = button.parentElement.querySelector('input[type="number"]');
   let name = input.dataset.name;  
+  
+  const wrapper = button.closest('.varian-wrapper');
+if (wrapper) {
+  wrapper.classList.remove('show');
+  const mainBtn = wrapper.previousElementSibling;
+  if (mainBtn && mainBtn.innerText.includes('Pilih')) {
+    mainBtn.innerText = '+Keranjang';
+  }
+}
 
   // Jika input disabled (stok kosong), munculkan modal alternatif
   if (input.disabled) {
