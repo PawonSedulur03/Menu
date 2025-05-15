@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Pawon Sedulur menghadirkan bakso halal frozen, cireng isi, gyoza, dimsum, dan jajanan klasik Indonesia di Jepang. Praktis, lezat, halal! Rasakan Kelezatan di setiap sajian.">
   <meta property="og:title" content="Pawon Sedulur - Bakso Halal Frozen & Jajanan Indonesia">
-<meta property="og:description" content="Ini bukan sekadar makanan. Ini adalah cerita. Tentang rindu yang dijawab. Tentang keluarga yang dihadirkan lewat semangkuk bakso. Tentang Sedulur, yang saling menguatkan lewat rasa.">
+<meta property="og:description" content="Cireng isi, gyoza, dimsum, dan bakso klasik yang praktis dan halal di Jepang.">
 <meta property="og:image" content="https://i.ibb.co/6cS6kFws/Selamat-datang-20250422-102638-0000.png">
 <meta property="og:url" content="https://pawonsedulur03.github.io/Menu/">
   <title>Bakso Halal Frozen di Jepang | Cireng Isi, Gyoza, Dimsum - Pawon Sedulur</title>
@@ -32,10 +32,25 @@
     <img src="https://i.ibb.co/h1KNDNKJ/menu-7528909-1.png" alt="Menu">
     <span>Menu</span>
   </a>
-  <a href="#checkout" class="nav-item">
-    <img src="https://i.ibb.co/G3FqKzXb/check-out-6850926-2.png" alt="checkout">
-    <span>checkout</span>
-  </a>
+  
+  <a href="#checkout" class="nav-item" onclick="showCartSummary()">
+  <div style="position: relative;">
+    <img src="https://i.ibb.co/wZcB15Hm/grocery-store.png" alt="checkout">
+    <div id="checkout-badge" style="
+      position: absolute;
+      top: -6px;
+      right: -10px;
+      background-color: red;
+      color: white;
+      font-size: 10px;
+      padding: 2px 5px;
+      border-radius: 50%;
+      display: none;
+    ">0</div>
+  </div>
+  <span>Checkout</span>
+</a>
+  
   <a href="#testimonials" class="nav-item">
     <img src="https://i.ibb.co/Gv2Q9L3x/star-14187068.png" alt="Testimoni">
     <span>Testimoni</span>
@@ -66,6 +81,7 @@
       <p><strong>Swipe gambar untuk lihat semua varian bakso prasmanan dan pelengkap spesial kami!</strong></p>
       <div class="scrollmenu2">
    <!-- bakso prasmanan -->
+   
       <!-- Bakso kecil -->
       <div class="product2 ">        	
         <img class="imgs2" src="https://i.ibb.co/WNNryZPt/Bakso-20250512-202358-0000.png"
@@ -80,9 +96,9 @@
                      
      <input type="number" class="qty-input" min="0" value="0" data-name="Bakso Kecil 1pcs" data-price="105">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
      <!-- Bakso Mercon -->
-      <div class="product2 ">        	
+ya     <div class="product2 ">        	
         <img class="imgs2" src="https://i.ibb.co/4R9b9R3X/Bakso-20250512-202443-0000.png"
         loading="lazy" 
         onclick="addQty(this)"
@@ -94,7 +110,7 @@
      alt="Cart Icon" class="cart-icon">
      <input type="number" class="qty-input" min="0" value="0" data-name="Bakso Mercon 1pcs" data-price="490">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
    
    <!-- Bakso Keju Pedas-->
    <div class="product2">        
@@ -107,7 +123,7 @@
      alt="Cart Icon" class="cart-icon" >
          <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Keju Pedas 1pcs" data-price="490">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>
       </div>
    
    <!-- Bakso Urat -->
@@ -122,7 +138,7 @@
      alt="Cart Icon" class="cart-icon">         
                 <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Urat 1pcs" data-price="460">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>        
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>        
       </div>
       
       <!-- Bakso Keju-->
@@ -136,7 +152,7 @@
      alt="Cart Icon" class="cart-icon">
         <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Keju 1pcs" data-price="460">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>        
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>        
 </div>
 
 <!-- Bakso Telur-->
@@ -152,7 +168,7 @@
      alt="Cart Icon" class="cart-icon">
                 <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Telur 1pcs" data-price="410">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>
 </div>   
  
  <!-- Bakso Tahu-->  
@@ -167,7 +183,7 @@
      alt="Cart Icon" class="cart-icon">
                 <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Tahu 1pcs" data-price="275">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>
 </div>  
 
  <!-- kuah gurih -->
@@ -182,7 +198,7 @@
                      
      <input type="number" class="qty-input" min="0" value="0" data-name="Biang Kaldu Gurih" data-price="90">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
     
     <!-- tetelan+lemak -->
       <div class="product2 ">        	
@@ -196,7 +212,7 @@
                      
      <input type="number" class="qty-input" min="0" value="0" data-name="Tetelan+Lemak" data-price="70">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
     
     <!-- sambal -->
       <div class="product2 ">        	
@@ -210,7 +226,7 @@
                      
      <input type="number" class="qty-input" min="0" value="0" data-name="Sambal" data-price="70">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
     
     <!-- bihun -->
       <div class="product2 ">        	
@@ -224,7 +240,7 @@
                      
      <input type="number" class="qty-input" min="0" value="0" data-name="Bihun" data-price="80">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>    
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>    
     </div>
     <br>
     
@@ -243,7 +259,7 @@
      alt="Cart Icon" class="cart-icon">
      <input type="number" class="qty-input" min="0" value="0" data-name="Bakso Mercon Spesial" data-price="1300">
         <br>  
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>                                                                             </div>
    
    <!-- Bakso Keju Pedas-->
    <div class="product">        
@@ -253,7 +269,7 @@
      alt="Cart Icon" class="cart-icon" >
          <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Keju Pedas Spesial" data-price="1300">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>
       </div>
    
    <!-- Bakso Urat -->
@@ -265,7 +281,7 @@
      alt="Cart Icon" class="cart-icon">         
                 <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Urat Spesial" data-price="1250">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>        
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>        
       </div>
       
       <!-- Bakso Keju-->
@@ -277,7 +293,7 @@
      alt="Cart Icon" class="cart-icon">
         <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Keju Spesial" data-price="1250">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>        
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>        
 </div>
 
 <!-- Bakso Telur-->
@@ -290,7 +306,7 @@
      alt="Cart Icon" class="cart-icon">
                 <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Telur Spesial" data-price="1200">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>
 </div>   
  
  <!-- Bakso Tahu-->  
@@ -303,15 +319,15 @@
      alt="Cart Icon" class="cart-icon">
                 <input class="qty-input" type="number" min="0" value="0" data-name="Bakso Tahu Spesial" data-price="1050">
         <br>
-    <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+    <button type="button" class="btn btn-warning btn-sm " onclick="addQty(this)">+Keranjang</button>
 </div>  
   </div>
   
    <p class="accorhead">Menu Bakso Kiloan</p>
   <div id="bakso_kiloan">
       <div class="product-list">
-                
-<!-- Bakso Kecil -->
+          
+          <!-- Bakso Kecil -->
      <div class="product">
   <img src="https://i.ibb.co/XnJhhd3/Bakso-20250503-222458-0000.png" loading="lazy" alt="Bakso Kecil">
   <img src="https://cdn-icons-png.flaticon.com/512/891/891462.png" alt="Cart Icon" class="cart-icon">
@@ -395,6 +411,7 @@
   </div>
 </div>
 
+
 <!-- Bakso Keju -->
      <div class="product">
   <img src="https://i.ibb.co/pBvT7sJL/Bakso-20250503-222843-0000.png" loading="lazy" alt="Bakso Keju">
@@ -458,6 +475,9 @@
   </div>
 </div>
 </div>
+
+
+      
         
   <p class="accorhead">Menu Jajanan</p>
   <div id="jajanan">
@@ -473,7 +493,7 @@
      alt="Cart Icon" class="cart-icon">
         <input class="qty-input" type="number" min="0" value="0" data-name="Gyoza" data-price="500">
         <br>               
-        <button type="button" class="btn btn-warning" onclick="addQty(this)">+Keranjang</button>
+        <button type="button" class="btn btn-warning btn-sm" onclick="addQty(this)">+Keranjang</button>
     </div>
  
 </div></div>
@@ -485,10 +505,7 @@
 
   <h2 class="text-center mb-4">Checkout & Pemesanan</h2>    
 
-  <!-- Tombol Tampilkan Ringkasan -->
-  <div class="text-center mb-4">
-    <button type="button" class="btn btn-success" onclick="showCartSummary()">Tampilkan Ringkasan Pesanan</button>
-  </div>
+ 
 
   <!-- Ringkasan akan tampil di sini -->
   <div id="cart-summary" class="my-3" style="display: none;"></div>
@@ -675,4 +692,3 @@
  
 </body>
 </html
-    
