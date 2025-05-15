@@ -305,6 +305,8 @@ header {
       box-shadow: 0 2px 8px rgba(0,0,0,0.1);
       padding: 2px;
       text-align: center;
+      font-size: 9px;
+      font-weight: bold;
       transition: 0.3s;
     }
     .product img {
@@ -360,9 +362,11 @@ header {
 /*Notice*/
 .toast-custom {
   position: fixed;
-  bottom: 30px;
-  right: 30px;
+  top: 0%;
+  left: 9%;
+  transform: translate(-50%, -50%); /* Tengah horizontal + vertikal */
   background: #d62828;
+  font-size: 14px;
   color: white;
   padding: 15px 20px;
   border-radius: 12px;
@@ -370,7 +374,6 @@ header {
   font-weight: bold;
   z-index: 9999;
   opacity: 0;
-  transform: translateY(30px);
   transition: opacity 0.5s, transform 0.5s, box-shadow 0.5s;
 }
 
@@ -676,4 +679,4 @@ ul li {
     flex-direction: column;
     text-align: center;
   }
-  }
+}
