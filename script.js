@@ -1,3 +1,20 @@
+//notif item
+function updateCheckoutBadge() {
+  let totalQty = 0;
+  const inputs = document.querySelectorAll('.qty-input');
+  inputs.forEach(input => {
+    totalQty += parseInt(input.value) || 0;
+  });
+
+  const badge = document.getElementById('checkout-badge');
+  if (totalQty > 0) {
+    badge.style.display = 'inline-block';
+    badge.innerText = totalQty;
+  } else {
+    badge.style.display = 'none';
+  }
+}
+
 //animasi scroll 
 const scrollmenu2 = document.querySelector('.scrollmenu2');
 
@@ -186,6 +203,7 @@ if (wrapper) {
   // Jika stok aman, lanjut tambahkan qty
     input.value = parseInt(input.value) + 1; document.getElementById('click-sound').play();
     showToast(`${name} ditambahkan ke keranjang!`);
+    updateCheckoutBadge();
   }
   
   
@@ -265,6 +283,7 @@ function showCartSummary() {
 // Panggil fungsi ini di awal (misalnya saat halaman load)
 window.addEventListener('DOMContentLoaded', () => {
   fetchStokData();
+  updateCheckoutBadge();
 });
 
 function fetchStokData() {
