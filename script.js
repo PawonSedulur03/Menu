@@ -251,10 +251,10 @@ function showCartSummary() {
 
   // Promo otomatis
   if (totalQty >= 5) {
-    promoText += `<li><strong>Bonus:<br>• 1x Toping Tetelan+lemak GRATIS!</strong></li>`;
+    promoText += `<li><strong>Bonus:<br>• 1x Bumbu bakso GRATIS!</strong></li>`;
   }
   if (total >= 3000) {
-    promoText += `<li><strong>Bonus:<br>• 2x -Toping Sambal GRATIS!<br>• 2x -Toping Tetelan+lemak GRATIS!. </strong></li>`;
+    promoText += `<li><strong>Bonus:<br>• 2x Bumbu bakso GRATIS!</strong></li>`;
   }
 
   if (pesan.length > 0) {
